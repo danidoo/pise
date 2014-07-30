@@ -33,6 +33,7 @@ class iseERS:
 			'EndPointsIdentityGroup': {'path': '/ers/config/endpointgroup', 'header': 'application/vnd.com.cisco.ise.identity.endpointgroup.1.0+xml'},
 			'InternalUser': {'path': '/ers/config/internaluser', 'header': 'application/vnd.com.cisco.ise.identity.internaluser.1.0+xml'},
 			'IdentityGroup': {'path': '/ers/config/identitygroup', 'header': 'application/vnd.com.cisco.ise.identity.identitygroup.1.0+xml'},
+			'GuestUser': {'path': '/ers/config/guestuser', 'header': 'application/vnd.com.cisco.ise.identity.guestuser.1.0+xml'}
 		}
 
 	def debugMsg(self, msg):
@@ -92,7 +93,7 @@ class iseERS:
 		if resp.status == 200 or resp.status == 201 or resp.status == 204:
 			return data
 		else:
-			sys.exit('Error ' + str(resp.status) + ' making ' + method[operation] + ' request at: ' + url)
+			sys.exit('Error ' + str(resp.status) + ' making ' + self.method[operation] + ' request at: ' + url)
 
 	def getUsers(self):
 		response = self.request('READ', 'InternalUser')
